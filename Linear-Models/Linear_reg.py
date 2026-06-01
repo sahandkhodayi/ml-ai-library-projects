@@ -2,23 +2,22 @@
 import matplotlib.pylab as plt
 import numpy as np
 
-x = np.array([
-1,2,3,4,5,6,7,8,9,10
+# Features: [size_sqm, num_rooms, age_years]
+X = np.array([
+    [50,  2, 10],
+    [60,  2, 15],
+    [75,  3, 5],
+    [80,  3, 20],
+    [90,  4, 8],
+    [100, 4, 3],
+    [110, 4, 12],
+    [120, 5, 7],
+    [130, 5, 2],
+    [150, 6, 1]
 ])
 
-y = np.array([
-6.5,
-6.8,
-10.2,
-9.5,
-14.7,
-15.1,
-18.9,
-17.2,
-22.4,
-20.3
-])
-
+# Price in thousands
+y = np.array([150, 165, 210, 195, 270, 310, 280, 350, 390, 450])
 def cost(w,b):
     
     sum=0
@@ -47,42 +46,61 @@ def cost(w,b):
 # ax.set_zlabel("cost")
 
 
+# Normalize
+X_mean = X.mean(axis=0)
+X_std = X.std(axis=0)
+X_norm = (X - X_mean) / X_std
 
-def partial_w(w,b):
-    sum=0
-    for i in range(len(x)):
-        power=(w*x[i]+b-y[i])*x[i]
-        sum+=power
-    return sum / (len(x))
+m, n = X_norm.shape
+w = np.zeros(n)
+b = 0
+
+def cost(w, b):
+    errors = X_norm @ w + b - y
+    return (1 / (2 * m)) * np.sum(errors ** 2)
+
+def gradient(w, b):
+    errors = X_norm @ w + b - y
+    dw = (1 / m) * X_norm.T @ errors
+    db = (1 / m) * np.sum(errors)
+    return dw, db
+
+def gradient_descent(alpha, w, b):
+    cost_history = []
     
-def partial_b(w,b):
-    sum=0
-    for i in range(len(x)):
-        power=w*x[i]+b-y[i]
-        sum+=power
-    return sum / (len(x))
-
-def finding_local_minima(alpha,w,b):
-
     while True:
-        old_w=w
-        old_B=b
-        w=old_w-(alpha*partial_w(old_w,old_B))
-        b=old_B-(alpha*partial_b(old_w,old_B))
-        
-        
+        dw, db = gradient(w, b)
+        new_w = w - alpha * dw
+        new_b = b - alpha * db
 
-        if abs(old_w - w) < 1e-6 and abs(old_B - b) < 1e-6:
+        cost_history.append(cost(w, b))
+
+        if np.all(np.abs(new_w - w) < 1e-6) and abs(new_b - b) < 1e-6:
             break
-    return w,b
 
-final_w,final_B=finding_local_minima(0.001,0,0)   
+        w, b = new_w, new_b
+    
+    return w, b, cost_history
 
+final_w, final_b, cost_history = gradient_descent(0.01, w, b)
 
+print("Weights:", final_w)
+print("Bias:", final_b)
 
-y_line = final_w*x+final_B
+predictions = X_norm @ final_w + final_b
 
-plt.scatter(x, y)          # data points
-plt.plot(x, y_line, 'r')   # regression line
+# Plot 1 - cost going down
+plt.figure(1)
+plt.plot(cost_history)
+plt.title("Cost over iterations")
+plt.xlabel("Iteration")
+plt.ylabel("Cost")
+
+# Plot 2 - actual vs predicted
+plt.figure(2)
+plt.scatter(range(len(y)), y, label='Actual', color='blue')
+plt.scatter(range(len(y)), predictions, label='Predicted', color='red')
+plt.title("Actual vs Predicted")
+plt.legend()
 
 plt.show()
