@@ -47,6 +47,32 @@ def cost(w,b):
 
 
 # Normalize
+def split(X:list[float],Y:list[float],seed,percent)->tuple:
+    x_test=[]
+    y_test=[]
+    x_train=X
+    y_train=Y
+    rounds=int((percent*len(X))/100)
+    np.random.seed(seed)
+    for i in range(len(X)-rounds):
+       index= np.random.randint(0, len(x_train) - 1)
+       x_test.append(x_train[index])
+       y_test.append(y_train[index])
+       x_train = np.delete(x_train, index, axis=0)
+       y_train = np.delete(y_train, index, axis=0)
+
+    return (x_train,y_train,x_test,y_test)
+
+
+x_train,y_train,x_test,y_test=split(X,y,30,70)
+print(len(x_train))
+print(x_test)
+
+
+
+
+
+
 X_mean = X.mean(axis=0)
 X_std = X.std(axis=0)
 X_norm = (X - X_mean) / X_std
@@ -55,7 +81,7 @@ m, n = X_norm.shape
 w = np.zeros(n)
 b = 0
 
-def cost(w, b):
+def cost(w, b,X,):
     errors = X_norm @ w + b - y
     return (1 / (2 * m)) * np.sum(errors ** 2)
 
@@ -89,8 +115,12 @@ print("Bias:", final_b)
 
 predictions = X_norm @ final_w + final_b
 
+R2_score=1-(sum((predictions-y)**2)/sum((y-np.mean(y))**2))
+R2_score_root=np.power(R2_score,1/2)
 # Plot 1 - cost going down
+print(R2_score_root)
 plt.figure(1)
+
 plt.plot(cost_history)
 plt.title("Cost over iterations")
 plt.xlabel("Iteration")
