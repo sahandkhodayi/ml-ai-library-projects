@@ -81,25 +81,25 @@ m, n = X_norm.shape
 w = np.zeros(n)
 b = 0
 
-def cost(w, b):
-    errors = X_norm @ w + b - y
+def cost(w, b,X,Y):
+    errors = X @ w + b - Y
     return (1 / (2 * m)) * np.sum(errors ** 2)
 
-def gradient(w, b):
-    errors = X_norm @ w + b - y
-    dw = (1 / m) * X_norm.T @ errors
+def gradient(w, b,X,Y,m):
+    errors = X @ w + b - Y
+    dw = (1 / m) * X.T @ errors
     db = (1 / m) * np.sum(errors)
     return dw, db
 
-def gradient_descent(alpha, w, b):
+def gradient_descent(alpha, w, b,X,Y):
     cost_history = []
-    
+    m,n=X.shape
     while True:
-        dw, db = gradient(w, b)
+        dw, db = gradient(w, b,X,Y,m)
         new_w = w - alpha * dw
         new_b = b - alpha * db
 
-        cost_history.append(cost(w, b))
+        cost_history.append(cost(w, b,X,Y))
 
         if np.all(np.abs(new_w - w) < 1e-6) and abs(new_b - b) < 1e-6:
             break
@@ -112,6 +112,7 @@ final_w, final_b, cost_history = gradient_descent(0.01, w, b)
 
 print("Weights:", final_w)
 print("Bias:", final_b)
+print(min(cost_history))
 
 predictions = X_norm @ final_w + final_b
 
@@ -134,3 +135,47 @@ plt.title("Actual vs Predicted")
 plt.legend()
 
 plt.show()
+
+class Linear_reg():
+
+    def __init__(self,alpha=0.01):
+        self.alpha=alpha
+        self.W=None
+        self.B=None
+
+    @staticmethod
+    def split(X:list[float],Y:list[float],seed,percent)->tuple:
+        x_test=[]
+        y_test=[]
+        x_train=X
+        y_train=Y
+        rounds=int((percent*len(X))/100)
+        np.random.seed(seed)
+        for i in range(len(X)-rounds):
+            index= np.random.randint(0, len(x_train) - 1)
+            x_test.append(x_train[index])
+            y_test.append(y_train[index])
+            x_train = np.delete(x_train, index, axis=0)
+            y_train = np.delete(y_train, index, axis=0)
+
+        return (x_train,y_train,x_test,y_test)
+    
+    def fit(self,X_train,Y_train)->None:
+        X_mean = X_train.mean(axis=0)
+        X_std = X_train.std(axis=0)
+        X_norm = (X_train - X_mean) / X_std
+        m, n = X_norm.shape
+        w = np.zeros(n)
+        b = 0
+        new_w,new_b,history=gradient_descent(self.alpha,w,b,X_norm,Y_train)
+
+        self.W=new_w
+        self.B=new_b
+        return
+    
+    def predict(self,X_test):
+        X_norm = (X_test - self.X_mean) / self.X_std  # use saved mean/std
+        return X_norm @ self.W + self.B
+
+                
+
