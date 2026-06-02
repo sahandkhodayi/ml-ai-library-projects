@@ -81,7 +81,7 @@ m, n = X_norm.shape
 w = np.zeros(n)
 b = 0
 
-def cost(w, b,X,):
+def cost(w, b):
     errors = X_norm @ w + b - y
     return (1 / (2 * m)) * np.sum(errors ** 2)
 
