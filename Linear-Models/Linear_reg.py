@@ -108,7 +108,7 @@ def gradient_descent(alpha, w, b,X,Y):
     
     return w, b, cost_history
 
-final_w, final_b, cost_history = gradient_descent(0.01, w, b)
+final_w, final_b, cost_history = gradient_descent(0.01, w, b,X_norm,y)
 
 print("Weights:", final_w)
 print("Bias:", final_b)
