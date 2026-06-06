@@ -12,7 +12,7 @@ The goal is not to replace libraries like NumPy, Scikit-Learn, or PyTorch, but t
 
 | Phase                    | Status         | Focus                                          |
 | ------------------------ | -------------- | ---------------------------------------------- |
-| Calculus                 | ✅ Completed    | Derivatives, integrals, optimization           |
+| Calculus                 | ✅ Completed    | Derivatives, integrals, optimization          |
 | Linear Algebra           | 🔄 In Progress | Vectors, matrices, eigenvalues, decompositions |
 | Probability & Statistics | 📚 Studying    | Probability theory, distributions, inference   |
 | Machine Learning         | 🔄 In Progress | Linear regression, optimization                |
