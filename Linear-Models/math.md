@@ -49,15 +49,18 @@ Used to measure the error between predictions and actual values.
 ### Gradient Descent
 
 Optimization algorithm used to minimize the cost function.
+By using gradient we could reach local minima of a function as you you can see in the graph!
 
+![Graph](assets/Graph.png)
 ![Gradient Descent](assets/gradient_descent.jpg)
 
 ---
 
 ### Logistic Regression & Sigmoid Function
-
+One of main reason to use sigmoid is to convert from linearity to non-linearity functions 
 Transforms linear outputs into probabilities for binary classification.
 
+![sigmoid func](assets/sigmoid_func.png)
 ![Sigmoid Function](assets/sigmoid_function.jpg)
 
 ---
