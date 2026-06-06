@@ -71,19 +71,10 @@ Transforms linear outputs into probabilities for binary classification.
 Machine-Learning-From-Scratch/
 │
 ├── Linear-Models/
-│   ├── linear_reg.py
-│   ├── logistic_reg.py
+│   ├── Models.py
 │   └── examples.py
 │
-├── assets/
-│   ├── linear_regression_formula.jpg
-│   ├── mse_formula.jpg
-│   ├── gradient_descent.jpg
-│   ├── sigmoid_function.jpg
-│   ├── cost_plot.png
-│   └── prediction_plot.png
-│
-└── README.md
+└── math.md
 ```
 
 ---
@@ -93,8 +84,7 @@ Machine-Learning-From-Scratch/
 ### Cost Function Convergence
 
 The cost decreases during training as Gradient Descent approaches the optimal parameters.
-
-![Cost Plot](assets/cost_plot.png)
+![Cost](assets/cost.png)
 
 ---
 
@@ -102,8 +92,16 @@ The cost decreases during training as Gradient Descent approaches the optimal pa
 
 Comparison between actual values and model predictions.
 
-![Prediction Plot](assets/prediction_plot.png)
+![Cost Plot](assets/data.png)
+![Cost score](assets/score.png)
 
+---
+## Logistic Regression Predictions
+
+Comparison between actual values and model predictions.
+
+![Graph_of_predict](assets/logistic.png)
+![Score](assets/score_logistic.png)
 ---
 
 ## Implemented Features

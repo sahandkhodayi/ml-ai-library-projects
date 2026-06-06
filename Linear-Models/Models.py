@@ -190,15 +190,16 @@ class LinearRegression():
 
                 
     
-    def score(self,x_test,y_test):
-        y_mean=y_test.mean(axis=0)
-        ss_res = np.sum((y_test-self.predict(x_test))**2)
-        ss_tot = np.sum((y_test-y_mean)**2)
+    def score(self, x_test, y_test):
+        y_test = np.array(y_test)
 
-        return 1 - ss_res/ss_tot
-    
-    
-    
+        y_mean = y_test.mean()
+
+        ss_res = np.sum((y_test - self.predict(x_test)) ** 2)
+        ss_tot = np.sum((y_test - y_mean) ** 2)
+
+        return 1 - ss_res / ss_tot
+        
     def Graph(self,X_test,Y_test):
         plt.figure(1)
 
