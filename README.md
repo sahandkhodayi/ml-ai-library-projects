@@ -1,104 +1,206 @@
-📚 Learning Journey
-This repository documents my progression through the mathematical prerequisites of AI/ML as a computer science student.
+# ML / AI Foundations Library
 
-Phase Status Focus
-1. Calculus Core ✅ Complete Derivatives, integrals, optimization
-2. Linear Algebra 🔄 In Progress Vectors, matrices, decompositions
-3. Probability & Stats 📅 Planned Distributions, inference, testing
-4. ML Algorithms 📅 Future Linear regression, neural nets from scratch
-5. Advanced Topics 📅 Future Auto-diff, transformers, reinforcement learning
+A personal repository documenting my journey toward Machine Learning, Deep Learning, and AI Engineering.
+
+Rather than only using existing libraries, I implement mathematical concepts and machine learning algorithms from scratch to understand how they work internally.
+
+The goal is not to replace libraries like NumPy, Scikit-Learn, or PyTorch, but to build a strong foundation in the mathematics and algorithms that power them.
 
 ---
 
-✨ Key Features
+## Current Learning Roadmap
 
-· Zero dependencies for core functionality (pure Python)
-· Educational focus — each module includes theory explanations
-· Visualizations for intuitive understanding of abstract concepts
-· Test suite verifying correctness against known mathematical results
-· Progressive implementation — watch the library grow from basic to advanced
-
----
-
-🔗 Module Details
-
-Calculus Module
-
-· Numerical differentiation (forward/central difference)
-· Gradient and Jacobian calculation
-· Optimization algorithms (gradient descent)
-· Visualizations of derivatives and integrals
-
-Linear Algebra Module
-
-· Matrix operations without NumPy
-· Eigenvalue/eigenvector computation
-· Matrix decompositions (LU, QR, SVD)
-· Applications to dimensionality reduction
+| Phase                    | Status         | Focus                                          |
+| ------------------------ | -------------- | ---------------------------------------------- |
+| Calculus                 | ✅ Completed    | Derivatives, integrals, optimization           |
+| Linear Algebra           | 🔄 In Progress | Vectors, matrices, eigenvalues, decompositions |
+| Probability & Statistics | 📚 Studying    | Probability theory, distributions, inference   |
+| Machine Learning         | 🔄 In Progress | Linear regression, optimization                |
+| Deep Learning            | 🎯 Next        | Neural networks, backpropagation               |
+| Computer Vision          | 🚀 Future Goal | Image processing, CNNs, detection systems      |
 
 ---
 
-🧪 Examples & Tutorials
+# Repository Structure
 
-Check out the examples directory for:
+## Calculus
 
-· Derivative visualization and error analysis
-· Gradient descent on various loss surfaces
-· Matrix transformation visualizations
-· Probability distribution simulations
+Implementation and experimentation with fundamental calculus concepts used in machine learning.
 
----
+Topics:
 
-🎓 Why This Exists
+* Derivatives
+* Numerical Differentiation
+* Integrals
+* Optimization Foundations
 
-As a computer science student targeting AI/ML research, I believe true mastery comes from implementing foundational concepts rather than just using libraries. This repository serves as:
+Files:
 
-1. Learning documentation — translating mathematical theory into code
-2. Portfolio foundation — demonstrating depth over breadth
-3. Future reference — a codebase to build upon for advanced projects
-4. Educational resource — for others following a similar path
-
----
-
-📈 Progress Tracking
-
-· Total Modules: 6 planned
-· Completed: 1 (Calculus)
-· Lines of Code: Growing daily
-· Last Major Update: [Date of last significant addition]
+```text
+calculus/
+├── derivative.py
+├── integrals/
+└── README.md
+```
 
 ---
 
-🤝 Contributing & Learning Together
+## Linear Algebra
 
-While this is primarily a personal learning project, suggestions and educational discussions are welcome! If you're also learning these concepts, feel free to:
+Core mathematical structures behind machine learning.
 
-· Open an issue with questions or clarifications
-· Suggest additional foundational topics to implement
-· Share resources that deepened your understanding
+Topics:
 
----
+* Vectors
+* Dot Products
+* Matrix Operations (In Progress)
+* Eigenvalues & Eigenvectors (Currently Studying)
 
-📜 License
+Files:
 
-Educational Use - This project is open for learning purposes. If you use any code, please credit the educational intent.
-
----
-
-🌟 Support This Journey
-
-If you find this project inspiring or helpful for your own learning:
-
-1. Star the repo ⭐ to bookmark it
-2. Follow my progress as I build toward ML mastery
-3. Start your own implementation journey — understanding beats memorization
+```text
+Linear Algebra/
+├── Dot_product.py
+└── README.md
+```
 
 ---
 
-"I'm not just learning ML — I'm building its mathematical foundation from the ground up."
+## Probability & Statistics
+
+Mathematical foundations for uncertainty, inference, and machine learning.
+
+Planned Topics:
+
+* Probability Rules
+* Bayes Theorem
+* Distributions
+* Statistical Inference
+* Hypothesis Testing
+
+Files:
+
+```text
+probability/
+```
 
 ---
 
-📅 Started: [Your Start Date]
-🎯 Target: Complete foundations by [Your Target Date]
-🚀 Next Milestone: Linear algebra module completion
+## Algorithms & Data Structures
+
+Implementations of foundational data structures and algorithms.
+
+Current Implementations:
+
+* Linked List
+
+Files:
+
+```text
+algorithm & DS/
+├── linked_list.py
+└── README.md
+```
+
+---
+
+## Linear Models
+
+Machine Learning algorithms implemented from scratch.
+
+Current Implementation:
+
+### Linear Regression
+
+Features:
+
+* Multiple Features
+* Feature Normalization
+* Gradient Descent
+* Cost Function Tracking
+* R² Evaluation
+* Vectorized Matrix Operations
+
+Files:
+
+```text
+Linear-Models/
+├── Linear_reg.py
+└── main.py
+```
+
+Planned Additions:
+
+* Logistic Regression
+* Regularization
+* Classification Metrics
+
+---
+
+# Philosophy
+
+My learning philosophy is simple:
+
+**No Black Boxes.**
+
+Whenever possible, I prefer implementing concepts myself before relying on high-level libraries.
+
+Understanding the mathematics and algorithms behind machine learning allows me to:
+
+* Debug models more effectively
+* Read technical papers with confidence
+* Build systems from first principles
+* Develop deeper intuition than simply calling library functions
+
+---
+
+# Current Progress
+
+### Completed
+
+* Basic Calculus
+* Dot Product Implementation
+* Linked List Implementation
+* Multivariable Linear Regression From Scratch
+
+### Currently Studying
+
+* Matrix Algebra
+* Eigenvalues & Eigenvectors
+* Matrix Decompositions
+* Probability Foundations
+
+### Next Milestones
+
+* Logistic Regression From Scratch
+* Neural Networks
+* Deep Learning Fundamentals
+* Computer Vision Projects
+
+---
+
+# Long-Term Goal
+
+Build a strong mathematical and engineering foundation for:
+
+* Machine Learning
+* Deep Learning
+* Computer Vision
+* AI Systems Engineering
+
+Ultimately, I aim to design and build intelligent systems while understanding the mathematics that make them possible.
+
+---
+
+# Why This Repository Exists
+
+This repository serves as:
+
+1. A learning journal documenting my progress.
+2. A collection of implementations built from scratch.
+3. A reference for future projects.
+4. A record of growth from beginner to AI engineer.
+
+---
+
+*"I'm not just learning machine learning — I'm learning how machine learning is built."*
